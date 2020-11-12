@@ -1,28 +1,32 @@
 #include "Monster.h"
 using namespace std;
 
-void Attack(Monster& monster1, Monster& monster2) // monster1 Attacks monster2
+void Attack(Adventurer& adventurer, Monster& monster) // ADVENTURER attacks Monster
 {
-    monster2.SetHp(monster2.GetHp() - monster1.GetDmg());
-    if (monster2.GetHp() < 0) { monster2.SetHp(0); }
+    monster.SetHp(monster.GetHp() - adventurer.GetDmg());
+    if (monster.GetHp() < 0) { monster.SetHp(0); }
+    adventurer.LevelingLogic();
 }
 
-void Battle(Monster& monster1, Monster& monster2)
+void Attack(Monster& monster, Adventurer& adventurer) // Monster attacks ADVENTURER
+{
+    adventurer.SetAct_Hp(adventurer.GetAct_Hp() - monster.GetDmg());
+    if (adventurer.GetAct_Hp() < 0) { adventurer.SetAct_Hp(0); }
+}
+
+void Battle(Adventurer& adventurer, Monster& monster)
 {
     int n = 0;
-    while (monster1.GetHp() > 0 && monster2.GetHp() > 0)
+    while (adventurer.GetHp() > 0 && monster.GetHp() > 0)
     {
-        if ((n % 2 == 0) && monster1.GetHp() > 0)
-            Attack(monster1,monster2);
-        else if (monster2.GetHp() > 0)
-            Attack(monster2, monster1);
-
-
+        if ((n % 2 == 0) && adventurer.GetHp() > 0)
+            Attack(adventurer, monster);
+        else if (monster.GetHp() > 0)
+            Attack(monster, adventurer);
         n++;
-
     }
-    if (monster1.GetHp() == 0) {std::cout << monster2.GetName() << " wins Remaining HP: "<< monster2.GetHp() << endl; }
-    else {std::cout << monster1.GetName() << " wins Remaining HP: " << monster1.GetHp() << endl; }
+    if (adventurer.GetHp() == 0) { std::cout << monster.GetName() << " wins Remaining HP: " << monster.GetHp() << endl; }
+    else { std::cout << adventurer.GetName() << " wins Remaining HP: " << adventurer.GetHp() << " Level: " << adventurer.GetLevel() << endl; }
 }
 
 
@@ -31,9 +35,9 @@ int main(int argc, char** argv)
    if (argc == 3)
         try
     {
-        Monster thor = Monster::parseUnit(argv[1]);
-        Monster hulk = Monster::parseUnit(argv[2]);
-        Battle(hulk, thor);
+       Monster monster = Monster::parseUnit(argv[1]);
+       Adventurer adventurer = Monster::parseUnit(argv[2]);
+       Battle(adventurer, monster);
     }
 
     catch (int e)
