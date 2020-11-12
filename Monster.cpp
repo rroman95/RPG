@@ -23,3 +23,29 @@ Monster Monster::parseUnit(JSON& obj)
 
 
 };
+
+void Adventurer::LevelingLogic()
+{
+    xp += dmg;
+
+    if (xp >= 100)
+        while (xp >= 100)
+        {
+            level++;
+            xp -= 100;
+            hp = hp + (hp * 0.1);
+            act_hp = hp;
+            dmg = dmg + (dmg * 0.1);
+            //std::cout << name << " has leveled up to " << level << std::endl;
+        }
+}
+
+void Adventurer::SetAct_Hp(int acthp)
+{
+    act_hp = acthp;
+}
+
+void Adventurer::ToString()
+{
+    cout << GetName() << " HP: " << GetAct_Hp() << " DMG: " << GetDmg() << " Level: " << GetLevel() << " XP: " << GetXp() << endl;
+}
