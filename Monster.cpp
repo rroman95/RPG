@@ -1,28 +1,60 @@
 #include "Monster.h"
 
-void Monster::Attack(Monster& monster1, Monster& monster2) /// Monster1 attacks Monster2
-{
-    cout << monster1.name << " -> " << monster2.name << endl;
-    monster2.hp = monster2.hp - monster1.dmg;
-    if (monster2.hp < 0)
-        monster2.hp = 0;
-}
-
 void Monster::ToString()
 {
-    cout << GetName() << " HP: " << GetHp() << " DMG: " << GetDmg() << endl;
+     cout << GetName() << " HP: " << GetHp() << " DMG: " << GetDmg() << endl;
 }
 
-Monster::Monster()
-{
-    this->name = "";
-    this->hp = 0;
-    this->dmg = 0;
-}
 
-Monster::Monster(string name, int hp, int dmg)
+void Monster::SetHp(int newhp)
 {
-    this->name = name;
-    this->hp = hp;
-    this->dmg = dmg;
+    this->hp = newhp;
+}
+Monster Monster::parseUnit(const std::string& fileName)
+{
+    std::ifstream file;
+    std::string line;
+    std::string name;
+    std::string _hp;
+    std::string _dmg;
+    int hp = 0;
+    int dmg = 0;
+    int key = 0;
+    file.open(fileName);
+
+    if (!file.good()) throw 404;
+    if (file.is_open())
+    {
+        while (!file.eof())
+        {
+            getline(file, line);
+            if (key == 1)
+            {
+                size_t findcolon = line.find(":");
+                for (int i = findcolon+3; line[i] != '"'; i++)
+                {
+                     name += line[i];
+                }
+
+            }
+            if (key == 2)
+            {
+                for (unsigned int i = 0; i < line.size(); i++)
+                    if (isdigit(line[i]))
+                        _hp += line[i];
+            }
+            if (key == 3)
+            {
+                for (unsigned int i = 0; i < line.size(); i++)
+                    if (isdigit(line[i]))
+                        _dmg += line[i];
+            }
+
+            key++;
+        }
+        hp = stoi(_hp);
+        dmg = stoi(_dmg);
+        file.close();
+    }
+    return Monster(name, hp, dmg);
 }

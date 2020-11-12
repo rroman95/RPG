@@ -1,0 +1,6 @@
+thor wins Remaining HP: 100
+hulk wins Remaining HP: 120
+thor wins Remaining HP: 110
+hulk wins Remaining HP: 240
+hulk wins Remaining HP: 100
+hulk wins Remaining HP: 230
