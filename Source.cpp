@@ -28,9 +28,8 @@ void Battle(Adventurer& adventurer, Monster& monster)
     else { std::cout << adventurer.GetName() << " wins Remaining HP: " << adventurer.GetHp() << " Level: " << adventurer.GetLevel() << endl; }
 }
 
-
 int main(int argc, char** argv)
-{
+{  
    if (argc == 3)
         try
     {
@@ -43,9 +42,10 @@ int main(int argc, char** argv)
 
     catch (int e)
     {
+        if (e == 404)
         {std::cout << "File Doesnt exist" << std::endl; }
     }
-    if (argc < 3)
+   else
     {
         std::cout << "Wrong arguments" << std::endl;
     }
