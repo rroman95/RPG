@@ -1,12 +1,12 @@
-#pragma once
+#ifndef MONSTER_H
+#define MONSTER_H
 #include<iostream>
 #include<string>
 #include<fstream>
-using namespace std;
 
 class Monster
 {
-private:
+protected:
     std::string name;
     int hp;
     int dmg;
@@ -26,4 +26,24 @@ public:
     static void WhoAttacks(Monster&, Monster&);
     static void Attack(Monster&, Monster&);
     static Monster parseUnit(const std::string&);
+};
+
+class Adventurer : public Monster
+{
+protected:
+    int xp, level;
+    int act_hp;
+
+public:
+    Adventurer(const Monster& sz) :Monster(sz.GetName(), sz.GetHp(), sz.GetDmg()), xp(0), level(1), act_hp(hp) {};
+    int GetLevel() const { return level; }
+    void SetLevel(int);
+    int GetXp() const { return xp; };
+    void SetXp(int);
+    void ToString();
+    int GetAct_Hp() { return act_hp; };
+    void SetAct_Hp(int);
+
+
+    void LevelingLogic();
 };
