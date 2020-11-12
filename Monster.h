@@ -3,10 +3,12 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include "JSON.h"
+
 
 class Monster
 {
-protected:
+private:
     std::string name;
     int hp;
     int dmg;
@@ -47,3 +49,4 @@ public:
 
     void LevelingLogic();
 };
+#endif
