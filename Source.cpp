@@ -1,5 +1,4 @@
 #include "Monster.h"
-using namespace std;
 
 void Attack(Adventurer& adventurer, Monster& monster) // ADVENTURER attacks Monster
 {
@@ -35,9 +34,11 @@ int main(int argc, char** argv)
    if (argc == 3)
         try
     {
-       Monster monster = Monster::parseUnit(argv[1]);
-       Adventurer adventurer = Monster::parseUnit(argv[2]);
-       Battle(adventurer, monster);
+        JSON json1(argv[1]);
+        JSON json2(argv[2]);
+        Monster monster1 = Monster::parseUnit(json1);
+        Monster monster2 = Monster::parseUnit(json2);
+        Battle(monster1, monster2);
     }
 
     catch (int e)
