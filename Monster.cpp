@@ -2,7 +2,7 @@
 
 void Monster::ToString()
 {
-    std::cout << GetName() << " HP: " << GetHp() << " DMG: " << GetDmg() << " ATTACKSPEED: " << attackspeed << std::endl;
+    std::cout << GetName() << " HP: " << GetHp() << " DMG: " << GetDmg() << " Attackspeed: " << attackspeed << std::endl;
 }
 
 void Monster::SetHp(int newhp)
@@ -43,14 +43,16 @@ void Monster::WhoAttacks(Monster& monster1, Monster& monster2)
 
 }
 
-void Monster::Battle(Monster& monster1, Monster& monster2)
+void Monster::Battle(Monster& adventurer, Monster& monster)
 {
-    while (monster1.GetHp() > 0 && monster2.GetHp() > 0)
+    while (adventurer.GetHp() > 0 && monster.GetHp() > 0)
     {
-        WhoAttacks(monster1, monster2);
+        WhoAttacks(adventurer, monster);
+        adventurer.ToString();
+        monster.ToString();
     }
-    if (monster1.GetHp() == 0) { std::cout << monster2.GetName() << " wins Remaining HP: " << monster2.GetHp() << endl; }
-    else { std::cout << monster1.GetName() << " wins Remaining HP: " << monster1.GetHp() << endl; }
+    if (adventurer.GetHp() == 0) { std::cout << monster.GetName() << " wins Remaining HP: " << monster.GetHp() << std::endl; }
+    else { std::cout << adventurer.GetName() << " wins Remaining HP: " << adventurer.GetHp() << std::endl; }
 }
 
 Monster Monster::parseUnit(JSON& obj)
@@ -60,7 +62,8 @@ Monster Monster::parseUnit(JSON& obj)
     std::string name = charData["name"];
     int dmg = stoi(charData["dmg"]);
     int hp = stoi(charData["hp"]);
-    return Monster(name, hp, dmg);
+    int cooldown = stoi(charData["cooldown"]);
+    return Monster(name, hp, dmg, cooldown);
 
 
 };
@@ -74,10 +77,10 @@ void Adventurer::LevelingLogic()
         {
             level++;
             xp -= 100;
-            hp = hp + (hp * 0.1);
+            hp = hp + round(hp * 0.1);
             act_hp = hp;
-            dmg = dmg + (dmg * 0.1);
-            //std::cout << name << " has leveled up to " << level << std::endl;
+            dmg = dmg + round(dmg * 0.1);
+            std::cout << name << " has leveled up to " << level << std::endl;
         }
 }
 
@@ -88,5 +91,5 @@ void Adventurer::SetAct_Hp(int acthp)
 
 void Adventurer::ToString()
 {
-    cout << GetName() << " HP: " << GetAct_Hp() << " DMG: " << GetDmg() << " Level: " << GetLevel() << " XP: " << GetXp() << endl;
+    std::cout << GetName() << " HP: " << GetAct_Hp() << " DMG: " << GetDmg() << " Level: " << GetLevel() << " XP: " << GetXp() << " Attackspeed: " << GetAttackSpeed()<< std::endl;
 }
