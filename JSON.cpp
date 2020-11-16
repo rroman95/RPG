@@ -37,6 +37,11 @@ void JSON::jsonparser(std::ifstream& in)
 	}
 }
 
+JSON::JSON(std::ifstream& mystream)
+{
+	jsonparser(mystream);
+}
+
 JSON::JSON(std::string& argstring)
 {
 	std::ifstream in(argstring);
