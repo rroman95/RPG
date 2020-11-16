@@ -1,0 +1,6 @@
+{
+  "name" : "szomszedneni",
+  "hp" : 300,
+  "dmg" : 40
+  "cooldown" : 1
+}

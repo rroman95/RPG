@@ -20,7 +20,7 @@ bool Monster::IsAlive()
 
 void Monster::Attack(Monster& other) //Current Monster attacks Other Adventurer
 {
-    std::cout << this->name << " -> " << other.GetName() << std::endl;
+    //std::cout << this->name << " -> " << other.GetName() << std::endl;
     other.SetHp(other.GetHp() - dmg);
 }
 
@@ -42,8 +42,8 @@ void Monster::WhoAttacks(Monster& monster1, Monster& monster2)
     }
     if (monster1.cooldown == monster2.cooldown) //if cooldown1 == coldown2, monster1 attacks
     {
-        //Attack(monster1, monster2);
-        std::cout << "PARRY" << std::endl;
+        monster1.Attack(monster2);
+        //std::cout << "PARRY" << std::endl;
         monster1.cooldown = monster1.GetAttackSpeed();
         monster2.cooldown = monster2.GetAttackSpeed();
     }
@@ -55,11 +55,9 @@ void Monster::Battle(Monster& adventurer, Monster& monster)
     while (adventurer.IsAlive() && monster.IsAlive())
     {
         WhoAttacks(adventurer, monster);
-        adventurer.ToString();
-        monster.ToString();
+        //adventurer.ToString();
+        //monster.ToString();
     }
-    if (!adventurer.IsAlive()) { std::cout << monster.GetName() << " wins Remaining HP: " << monster.GetHp() << std::endl; }
-    else { std::cout << adventurer.GetName() << " wins Remaining HP: " << adventurer.GetHp() << std::endl; }
 }
 
 Monster Monster::parseUnit(JSON& obj)

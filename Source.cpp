@@ -3,21 +3,23 @@
 
 int main(int argc, char** argv)
 {  
-   //if (argc == 3)
+   if (argc == 3)
         try
     {
-        /*JSON json1(argv[1]);
-        JSON json2(argv[2]);*/
-        JSON json1("units/adventurer.json");
-        JSON json2("units/monster.json");
+        JSON json1(argv[1]);
+        JSON json2(argv[2]);
+        /*JSON json1("units/adventurer.json");
+        JSON json2("units/monster.json");*/
         Monster monster = Monster::parseUnit(json2);
         Adventurer adventurer = Monster::parseUnit(json1);
-        json1.printcharData();
+        /*json1.printcharData();
         json2.printcharData();
         monster.ToString();
-        adventurer.ToString();
+        adventurer.ToString();*/
 
         Monster::Battle(adventurer, monster);
+        if (!adventurer.IsAlive()) { std::cout << monster.GetName() << " wins Remaining HP: " << monster.GetHp() << std::endl; }
+        else { std::cout << adventurer.GetName() << " wins Remaining HP: " << adventurer.GetHp() << " Level: " << adventurer.GetLevel()<<  std::endl; }
     }
 
     catch (int e)
@@ -25,9 +27,9 @@ int main(int argc, char** argv)
         if (e == 404)
         {std::cout << "File Doesnt exist" << std::endl; }
     }
-   /*else
+   else
     {
         std::cout << "Wrong arguments" << std::endl;
-    }*/
+    }
     return 0;
 }

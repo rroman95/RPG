@@ -3,7 +3,7 @@
 
 void Adventurer::Attack(Monster& other) //Adventurer attacks Other Monster
 {
-    std::cout << this->name << " -> " << other.GetName() << std::endl;
+    //std::cout << this->name << " -> " << other.GetName() << std::endl;
     other.SetHp(other.GetHp() - dmg);
     LevelingLogic();
 }
@@ -21,7 +21,7 @@ void Adventurer::LevelingLogic()
             max_hp = max_hp + (int)round(max_hp * 0.1);
             hp = max_hp;
             dmg = dmg + (int)round(dmg * 0.1);
-            std::cout << name << " has leveled up to " << level << std::endl;
+            //std::cout << name << " has leveled up to " << level << std::endl;
         }
 }
 

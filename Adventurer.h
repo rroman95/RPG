@@ -17,6 +17,7 @@ public:
     int GetXp() const { return xp; };
     void ToString();
     int GetMax_Hp() { return max_hp; };
+    int GetLevel() { return level; }
 
 
     void LevelingLogic();
