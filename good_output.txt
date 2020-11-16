@@ -1,6 +1,3 @@
-thor wins Remaining HP: 100
-hulk wins Remaining HP: 120
-thor wins Remaining HP: 110
-hulk wins Remaining HP: 240
-hulk wins Remaining HP: 100
-hulk wins Remaining HP: 230
+Adventurer wins Remaining HP: 330 Level: 2
+Adventurer wins Remaining HP: 363 Level: 3
+Adventurer wins Remaining HP: 399 Level: 4
