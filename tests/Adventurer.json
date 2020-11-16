@@ -1,0 +1,6 @@
+{
+  "name" : "Adventurer",
+  "hp" : 300,
+  "dmg" : 15
+  "cooldown" : 2
+}
