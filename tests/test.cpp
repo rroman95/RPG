@@ -7,7 +7,7 @@ using namespace std;
 
 TEST(Jsontest, Fajlvaltozo) {
 	std::ifstream f("Adventurer.json");
-        JSON json1(f);
+        JSON json(f);
 	EXPECT_EQ(json.charData["name"], "Adventurer");
 	EXPECT_EQ(json.charData["dmg"], "300");
 	EXPECT_EQ(json.charData["hp"], "15");
