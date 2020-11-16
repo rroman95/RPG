@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(Han_Solo's RPG project)
+project(RPG)
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
