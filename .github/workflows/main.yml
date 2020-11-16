@@ -14,7 +14,18 @@ jobs:
     steps:
       
       - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: sudo apt-get install -y valgrind && sudo apt-get install -y cppcheck
+      - name: CPPCheck Static Code Analysis
+        run: cppcheck --enable=all ./*.cpp 2> report.txt && cat report.txt && if grep -q "(warning)" "./report.txt"; then exit 1; fi && if grep -q "(error)" "./report.txt"; then exit 1; fi
         
+      - name: Upload CPPCheck report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: report.txt
+          
       - name: Build
         run: g++ -Wall -Werror -std=c++17 *.cpp -o project
         
@@ -26,3 +37,6 @@ jobs:
         
       - name: I/O test 
         run: diff --strip-trailing-cr output.txt good_output.txt
+
+      - name: Valgrind memory check
+        run: valgrind --leak-check=full --error-exitcode=1 ./output units/adventurer.json units/monster.json
