@@ -3,9 +3,7 @@
 IFS=$'\n'
 
 
-./project units/thor.json units/loki.json >> output.txt
-./project units/thor.json units/hulk.json >> output.txt
-./project units/loki.json units/thor.json >> output.txt
-./project units/loki.json units/hulk.json >> output.txt 
-./project units/hulk.json units/thor.json >> output.txt
-./project units/hulk.json units/loki.json >> output.txt
+./project units/adventurer.json units/monster.json >> output.txt
+./project units/adventurer.json units/zombie.json >> output.txt
+./project units/adventurer.json units/szomszedneni.json >> output.txt
+
