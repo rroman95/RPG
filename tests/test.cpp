@@ -1,11 +1,11 @@
-#include "../JSON.h"
+#include "JSON.h"
 #include "gtest/gtest.h"
 
 
 using namespace std;
 
 
-TEST(Jsontest, Fajlvaltozo) {
+TEST(JSON_test, normal json file) {
 	std::ifstream f("Adventurer.json");
         JSON json(f);
 	EXPECT_EQ(json.charData["name"], "Adventurer");
@@ -13,3 +13,13 @@ TEST(Jsontest, Fajlvaltozo) {
 	EXPECT_EQ(json.charData["hp"], "300");
         EXPECT_EQ(json.charData["cooldown"], "2");
 }
+
+TEST(JSON_test, whitespace offset) {
+	std::ifstream f("Monster.json");
+        JSON json(f);
+	EXPECT_EQ(json.charData["name"], "Monster");
+	EXPECT_EQ(json.charData["dmg"], "100");
+	EXPECT_EQ(json.charData["hp"], "30");
+        EXPECT_EQ(json.charData["cooldown"], "2.5");
+}
+
