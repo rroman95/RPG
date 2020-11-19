@@ -23,3 +23,20 @@ TEST(JSON_test, whitespace_offset) {
         EXPECT_EQ(json.charData["cooldown"], "2.5");
 }
 
+TEST(JSON_test, different_type_of_inputs for JSON) {
+	std::ifstream stream_input("Adventurer.json");
+	std::string string_input = "Adventurer.json";
+	const char * filename_input = "Adventurer.json";
+	JSON json1(stream_input);
+	JSON json2(string_input);
+	JSON json2(filename_input);
+	EXPECT_EQ(json1.charData["name"], "Adventurer");
+	EXPECT_EQ(json2.charData["name"], "Adventurer");
+	EXPECT_EQ(json3.charData["name"], "Adventurer");
+	EXPECT_EQ(json1.charData["hp"], json2.charData["hp"]);
+	EXPECT_EQ(json2.charData["hp"], json3.charData["hp"]);
+	EXPECT_EQ(json1.charData["dmg"], json3.charData["dmg"]);
+	
+
+}
+
