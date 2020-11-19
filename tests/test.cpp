@@ -29,7 +29,7 @@ TEST(JSON_test, different_type_of_inputs_for_JSON) {
 	const char * filename_input = "Adventurer.json";
 	JSON json1(stream_input);
 	JSON json2(string_input);
-	JSON json2(filename_input);
+	JSON json3(filename_input);
 	EXPECT_EQ(json1.charData["name"], "Adventurer");
 	EXPECT_EQ(json2.charData["name"], "Adventurer");
 	EXPECT_EQ(json3.charData["name"], "Adventurer");
