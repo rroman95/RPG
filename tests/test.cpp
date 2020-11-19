@@ -23,7 +23,7 @@ TEST(JSON_test, whitespace_offset) {
         EXPECT_EQ(json.charData["cooldown"], "2.5");
 }
 
-TEST(JSON_test, different_type_of_inputs for JSON) {
+TEST(JSON_test, different_type_of_inputs_for_JSON) {
 	std::ifstream stream_input("Adventurer.json");
 	std::string string_input = "Adventurer.json";
 	const char * filename_input = "Adventurer.json";
