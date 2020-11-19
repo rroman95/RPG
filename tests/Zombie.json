@@ -1,0 +1,6 @@
+{
+  "name" :             "Zombie",
+  "hp" :            10,
+  "dmg" :          2,
+  "cooldown" :        1.75
+}
