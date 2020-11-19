@@ -5,7 +5,7 @@
 using namespace std;
 
 
-TEST(JSON_test, normal json file) {
+TEST(JSON_test, normal_json_file) {
 	std::ifstream f("Adventurer.json");
         JSON json(f);
 	EXPECT_EQ(json.charData["name"], "Adventurer");
@@ -14,7 +14,7 @@ TEST(JSON_test, normal json file) {
         EXPECT_EQ(json.charData["cooldown"], "2");
 }
 
-TEST(JSON_test, whitespace offset) {
+TEST(JSON_test, whitespace_offset) {
 	std::ifstream f("Monster.json");
         JSON json(f);
 	EXPECT_EQ(json.charData["name"], "Monster");
