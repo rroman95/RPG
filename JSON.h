@@ -1,4 +1,5 @@
-#pragma once
+#ifndef JSON_H
+#define JSON_H
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -28,3 +29,5 @@ public:
 	}
 
 };
+
+#endif
