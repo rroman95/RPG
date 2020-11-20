@@ -42,7 +42,7 @@ TEST(JSON_test, different_type_of_inputs_for_JSON) {
 
 TEST(Unit_test,Fight_til_death) {
 	std::ifstream in1("Adventurer.json");
-	std::ifstream in2("Monster.json);
+	std::ifstream in2("Monster.json");
         JSON json1(in1);
 	JSON json2(in2);
 	Monster monster = Monster::parseUnit(json2);
