@@ -48,7 +48,7 @@ TEST(Unit_test,Fight_til_death) {
 	Monster monster = Monster::parseUnit(json2);
         Adventurer adventurer = Monster::parseUnit(json11);
         Monster::Battle(adventurer, monster);
-	EXCEPT_TRUE(adventurer.IsAlive());
-	EXCEPT_FALSE(monster.IsAlive());
+	EXPECT_TRUE(adventurer.IsAlive());
+	EXPECT_FALSE(monster.IsAlive());
 }
 
