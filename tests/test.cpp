@@ -1,4 +1,6 @@
 #include "JSON.h"
+#include "Monster.h"
+#include "Adventurer.h"
 #include "gtest/gtest.h"
 
 
@@ -36,7 +38,17 @@ TEST(JSON_test, different_type_of_inputs_for_JSON) {
 	EXPECT_EQ(json1.charData["hp"], json2.charData["hp"]);
 	EXPECT_EQ(json2.charData["hp"], json3.charData["hp"]);
 	EXPECT_EQ(json1.charData["dmg"], json3.charData["dmg"]);
-	
+}
 
+TEST(Unit_test,Fight_til_death) {
+	std::ifstream in1("Adventurer.json");
+	std::ifstream in2("Monster.json)
+        JSON json1(in1);
+	JSON json2(in2);
+	Monster monster = Monster::parseUnit(json2);
+        Adventurer adventurer = Monster::parseUnit(json11);
+        Monster::Battle(adventurer, monster);
+	EXCEPT_TRUE(adventurer.IsAlive());
+	EXCEPT_FALSE(monster.IsAlive());
 }
 
